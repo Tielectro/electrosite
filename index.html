@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrogrupo</title>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/animate.css">
+  <link rel="stylesheet" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/font-awesome.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-dtwD2Oc2pox6EOv3bO9XvUBTu5RWPe3Z6i7U2mL7d5GC9H8/3hfEe3AY4F6DTxBy" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery e Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- All in One SEO 4.5.9.2 - aioseo.com -->
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://www.electrogrupo.com.py/">
+  <meta name="generator" content="All in One SEO (AIOSEO) 4.5.9.2">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Electrogrupo | Otro sitio realizado con WordPress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Electrogrupo">
+  <meta property="og:url" content="https://www.electrogrupo.com.py/">
+  <meta property="article:published_time" content="2019-03-15T15:12:38+00:00">
+  <meta property="article:modified_time" content="2023-06-09T14:41:06+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Electrogrupo">
+
+  <style>
+    /* Estilos do cabeçalho */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0); /* Inicia com fundo transparente */
+      z-index: 9999;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .solid {
+      background-color: rgb(255, 255, 255); /* Fundo branco quando rolar para baixo */
+    }
+
+    /* Estilos da logo */
+    .logo img {
+      max-width: 280px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+
+    /* Estilos da barra de navegação */
+    .navbar {
+      display: flex;
+      gap: 20px; /* Espaçamento entre os links */
+      align-items: center;
+    }
+
+    .navbar a {
+      color: #333333; /* Cor vermelha para os links */
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #e70707; /* Cor preta ao passar o mouse */
+    }
+
+    /* Estilo para o menu "hamburger" */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      color: red; /* Cor vermelha para o ícone "hamburger" */
+    }
+
+    /* Estilos para o menu de navegação móvel */
+    .navbar-mobile {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%; /* Largura total */
+      background-color: white;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Estilos para links do menu móvel */
+    .navbar-mobile a {
+      padding: 10px; /* Espaçamento dos links */
+      border-bottom: 1px solid #ccc; /* Linha divisória */
+      color: red;
+    }
+
+    /* Exibir a barra de navegação e ocultar o menu "hamburger" em telas grandes */
+    @media (min-width: 768px) {
+      .navbar {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+    }
+
+    /* Exibir o menu "hamburger" em telas menores */
+    @media (max-width: 767px) {
+      .navbar {
+        display: none;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: white; /* Cor branca de fundo do dropdown */
+      z-index: 9999;
+      margin-top: 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilos para os botões do dropdown */
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 16px;
+      color: #333333;
+      text-decoration: none;
+      border-radius: 5px; /* Bordas arredondadas para os botões */
+    }
+
+    /* Quando o mouse passa sobre os botões do dropdown */
+    .dropdown-menu a:hover {
+      background-color: #e70707; /* Cor vermelha ao passar o mouse */
+      color: white; /* Cor branca do texto */
+    }
+
+    /* Estilos para o dropdown em telas pequenas */
+    .navbar-mobile .dropdown-menu a {
+      color: #333333; /* Cor padrão do texto em telas pequenas */
+    }
+
+    .navbar-mobile .dropdown-menu a:hover {
+      background-color: red; /* Cor vermelha ao passar o mouse em telas pequenas */
+      color: white; /* Cor branca do texto em telas pequenas */
+    }
+    /* Movendo os botões para o centro */
+    @media (max-width: 768px) {
+      .navbar {
+        justify-content: center;
+      }
+    }
+
+    /* Ajustando o tamanho das imagens */
+    .image-container img {
+      width: 100px; /* Tamanho das imagens */
+      height: auto;
+    }
+
+    /* Movendo o contêiner de imagens para o lado direito */
+    @media (min-width: 768px) {
+      .image-container {
+        margin-left: auto;
+      }
+    }
+
+    /* Estilo para os botões */
+    .btn {
+      background-color: transparent; /* fundo transparente */
+      color: white; /* cor do texto branco */
+      border: 2px solid white; /* borda branca */
+      padding: 10px 20px; /* preenchimento */
+      border-radius: 5px; /* bordas arredondadas */
+      transition: background-color 0.3s, color 0.3s; /* transição suave */
+      margin-top: 20px; /* Espaço entre o título e o botão */
+    }
+
+    /* Espaço entre o título e o botão nos vídeos 2, 3 e 4 */
+    section h2 {
+      margin-bottom: 20px;
+    }
+
+    /* Efeito de hover para os botões */
+    .btn:hover {
+      background-color: red;
+    }
+
+    /* Ajustando a posição do título */
+    section h2 {
+      margin-bottom: 10px; /* Reduzindo o espaço entre o título e o botão */
+      margin-top: 0; /* Removendo o espaço acima do título */
+    }
+
+    /* Ícone de rolagem */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+    }
+
+    .scroll-down i {
+      font-size: 24px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+    .image-container {
+      display: flex;
+      flex-direction: column; /* Posiciona as imagens em coluna */
+    }
+
+    /* Estilos para as imagens */
+    .image-container img {
+      width: 100px; /* Ajuste conforme necessário */
+      height: auto;
+      margin-bottom: 10px; /* Espaçamento entre as imagens */
+    }
+
+    /* Estilos para os botões no centro do vídeo */
+    .video-content {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      margin-bottom: 80px; /* Adiciona margem abaixo do texto */
+    }
+
+    /* Estilos personalizados para o texto do vídeo */
+    .video-content h2 {
+      font-size: 60px; /* Tamanho da fonte */
+      color: #ffffff; /* Cor do texto */
+      font-family: 'Montserrat', sans-serif; /* Tipo de fonte */
+      margin-bottom: 30px; /* Espaçamento abaixo do título */
+    }
+
+    .video-content p {
+      font-size: 30px; /* Tamanho da fonte */
+      color: #ffffff; /* Cor do texto */
+      font-family: 'Montserrat', sans-serif; /* Tipo de fonte */
+      margin-bottom: 60px; /* Espaçamento abaixo do parágrafo */
+    }
+    .video-content p {
+      font-weight: bold; /* Aplica negrito ao texto */
+    }
+
+    /* Estilo para a seção de mídia */
+    .media-section {
+      background-color: rgb(51, 51, 51); /* Fundo cinza */
+      padding: 80px 0; /* Preenchimento superior e inferior */
+      position: relative; /* Garante que o pseudo-elemento seja posicionado em relação a esta seção */
+    }
+
+    .media-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .media-text {
+      flex: 1;
+    }
+
+    .media-text h3 {
+      font-size: 50px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      max-width: 600px; /* Defina a largura máxima desejada */
+      word-wrap: break-word; /* Forçar quebra de palavras longas */
+      color: #ffffff;
+      padding: 20px 0; /* Preenchimento */
+    }
+
+    .media-text p {
+      font-size: 30px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      white-space: pre-line; /* Quebra de linha */
+      max-width: 500px; /* Defina a largura máxima desejada */
+      word-wrap: break-word; /* Forçar quebra de palavras longas */
+      color: #ffffff;
+      padding: 20px 0; /* Preenchimento */
+    }
+
+    .media-button {
+      flex-shrink: 0;
+    }
+
+    .media-image {
+      flex-shrink: 0;
+      width: 500px;
+      height: 500px;
+      background-color: #ffffff;
+      background-size: cover; /* Ajusta a imagem para cobrir todo o contêiner */
+      background-position: center; /* Centraliza a imagem no contêiner */
+    }
+
+    footer {
+      /* Estilização do rodapé */
+      text-align: center; /* Centraliza todos os elementos dentro do rodapé */
+      padding: 20px; /* Espaçamento interno para o rodapé */
+      background-color: #ffffff; /* Cor de fundo para o rodapé (pode ser ajustada) */
+    }
+
+    /* Estilo para a imagem e o título */
+    .social-media {
+      max-width: 100%; /* Largura máxima da imagem */
+      height: 400px; /* Altura da imagem */
+      margin: -50px auto 30px; /* Margem inferior e centralização */
+      display: flex; /* Exibe os elementos em linha */
+      align-items: center; /* Alinha os elementos verticalmente */
+      justify-content: center; /* Alinha os elementos horizontalmente */
+      position: relative; /* Posição relativa para posicionar o conteúdo */
+    }
+
+    .social-media-content {
+      text-align: center; /* Centraliza o texto */
+      color: #fff; /* Cor do texto */
+      margin-bottom: 20px; /* Adicione a margem desejada entre o título e os ícones */
+    }
+
+    .social-media h2 {
+      font-size: 50px; /* Tamanho do título */
+      margin-bottom: 70px; /* Adicione a margem desejada entre o título e os ícones */
+    }
+
+    /* Estilo para os ícones das redes sociais */
+    .social-icons {
+      display: flex; /* Exibe os ícones em linha */
+      justify-content: center; /* Alinha os ícones ao centro */
+    }
+
+    .social-icons .social-button {
+      display: inline-block; /* Permite ajustar o tamanho do fundo quadrado */
+      background-color: transparent; /* Fundo quadrado transparente */
+      margin: 0 30px; /* Espaçamento entre os ícones */
+      padding: 20px; /* Espaçamento interno */
+      border-radius: 5px; /* Borda arredondada */
+      transition: background-color 0.3s; /* Transição suave de cor */
+      border: 2px solid white; /* Adiciona uma borda branca */
+      cursor: pointer; /* Altera o cursor ao passar o mouse */
+    }
+
+    .social-icons .social-button:hover {
+      background-color: rgba(255, 0, 0, 0.5); /* Fundo vermelho transparente ao passar o mouse */
+    }
+
+    .social-icons .social-button i {
+      color: #fff; /* Cor do ícone (branco) */
+      font-size: 30px; /* Tamanho do ícone */
+    }
+
+    /* Estilo para o espaço da logo no rodapé */
+    .footer-logo,
+    .footer-images {
+      /* Estilos para as divisões dentro do rodapé */
+      display: flex; /* Alinhamento flexível */
+      justify-content: center; /* Centraliza os elementos dentro de cada divisão */
+      align-items: center; /* Centraliza verticalmente os elementos dentro de cada divisão */
+      margin-bottom: 10px; /* Espaçamento inferior entre as divisões */
+    }
+  </style>
+  <style>
+    /* Estilos para o botão maior e texto em negrito */
+    .btn-lg {
+      padding: 15px 30px; /* Ajuste o preenchimento conforme necessário para aumentar o tamanho */
+    }
+
+    .btn-bold {
+      font-weight: bold; /* Torna o texto em negrito */
+    }
+    .footer-logo img {
+      /* Estilos para a imagem dentro da divisão footer-logo */
+      max-width: 250px; /* Limita a largura da imagem */
+    }
+
+    .footer-images img {
+      /* Estilos para as imagens dentro da divisão footer-images */
+      width: 100px; /* Largura das imagens */
+      margin: 0 10px; /* Espaçamento horizontal entre as imagens */
+    }
+    .copyright {
+      /* Estilo para a seção de direitos autorais */
+      margin-top: 20px; /* Adiciona um pequeno espaço acima para separar da divisão anterior */
+      text-align: center; /* Centraliza o texto */
+      font-size: 13px;
+      color: #333333;
+    }
+  </style>
+  <style>
+    /* Estilo para a tela modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent; /* Alterado para tornar o fundo transparente */
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: transparent;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    /* Estilo para o título da tela modal */
+    .modal-content h2 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    /* Estilo para o texto da tela modal */
+    .modal-content p {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .social-icons {
+      margin-bottom: 20px; /* Adicionado espaço entre o botão "Cerrar" e os botões das redes sociais */
+    }
+    /* Estilo para o botão "Cerrar" */
+    .modal-close-button {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #333; /* Adicionado para a borda ao redor do botão */
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .modal-close-button:hover {
+      background-color: red;
+      color: #fff;
+    }
+  </style>
+  <style>
+    /* Estilo para a seção "section-represent" */
+    .section-represent {
+      padding: 40px 10px; /* Ajuste o padding conforme necessário */
+      text-align: left;
+    }
+
+    /* Estilo para o título da seção */
+    .represent-title {
+      font-size: 3em;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      color: #333333;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Estilo para o carrossel */
+    .carousel-container {
+      overflow: hidden; /* Oculta as imagens fora da área visível */
+      width: 100%; /* Largura total do contêiner */
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 10s linear infinite; /* Transição contínua, suave e constante */
+    }
+
+    .carousel-inner img {
+      max-width: 255px; /* Largura máxima de 255px */
+      max-height: 255px; /* Altura máxima de 255px */
+      height: auto; /* Ajuste automático da altura */
+      width: auto; /* Ajuste automático da largura */
+      margin-right: 20px; /* Espaço de 10px entre as imagens */
+    }
+    .carousel-inner img:last-child {
+      margin-right: 0;
+    }
+
+    /* Estilos para responsividade */
+    @media (max-width: 768px) {
+      .carousel-inner img {
+        max-width: 130px; /* Ajusta o tamanho das imagens para telas menores */
+        max-height: 150px; /* Ajusta o tamanho das imagens para telas menores */
+        margin-right: 8px;
+      }
+    }
+  </style>
+  </style>
+</head>
+</head>
+<body>
+<body>
+<!-- Ícone do WhatsApp -->
+<div id="whatsapp-icon" style="display: none; position: fixed; bottom: 40px; right: 20px; z-index: 9999;">
+  <a href="https://wa.me/+595983130313" target="_blank" style="display: block; background-color: green; padding: 10px; border-radius: 50%;">
+    <i class="fab fa-whatsapp" style="font-size: 40px; color: white;"></i>
+  </a>
+</div>
+
+<!-- Tela modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <h2>Bienvenido!</h2>
+    <p>Síguenos en las redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/electrogruposaci/" target="_blank" class="social-button">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/electrogrupo.saci/" target="_blank" class="social-button">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/+595983130313" target="_blank" class="social-button">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+    <button class="modal-close-button" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+</body>
+<header class="header">
+  <div class="logo">
+    <img src="img/logo1semfundo.png" alt="Logo Electrogrupo">
+  </div>
+
+  <!-- Ícone do menu "hamburger" -->
+  <div class="menu-icon" id="menu-icon">
+    <!-- Ícone de "hamburger" mais elegante usando Font Awesome -->
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Barra de navegação -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Menu de navegação móvel -->
+  <nav class="navbar-mobile" id="navbar-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Contêiner para as imagens -->
+  <div class="image-container">
+    <img src="img/consiloslogo1semfundo.png" alt="Image 1">
+    <img src="img/imbillogo1semfundo.png" alt="Image 2">
+    <img src="img/westernlogo1semfundo.png" alt="Image 3">
+  </div>
+</header>
+
+<!-- Vídeo 1 (Cabeçalho) -->
+<video autoplay muted loop style="position: relative; width: 100%; height: 100vh; object-fit: cover;">
+  <source src="img/video1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<!-- Ícone de rolagem no vídeo 1 -->
+<div class="scroll-down">
+  <i class="fa fa-angle-down"></i>
+</div>
+
+<!-- Vídeo 2 -->
+<section style="height: 100vh; position: relative;">
+  <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="img/video2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-content">
+    <h2>CONSTRUYENDO UN FUTURO SOLIDO</h2>
+    <p>30 Años de Experiencia en Electrica Industrial</p>
+    <button class="btn" onclick="window.location.href='LaEmpresa.html'">LA EMPRESA</button>
+  </div>
+</section>
+
+<!-- Vídeo 3 -->
+<section style="height: 100vh; position: relative;">
+  <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="img/video3.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-content">
+    <h2>Tecnología Innovadora en Riego, Bombeo y Almacenamiento de Granos</h2>
+    <button class="btn" onclick="window.location.href='Productos.html'">PRODUCTOS</button>
+  </div>
+</section>
+
+<!-- Vídeo 4 -->
+<section style="height: 100vh; position: relative;">
+  <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="img/expertoeneletrica.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-content">
+    <h2>Servicios</h2>
+    <button class="btn" onclick="window.location.href=''">SERVICIOS</button>
+  </div>
+</section>
+
+<!-- Seção de mídia -->
+<section class="media-section">
+  <div class="media-content">
+    <div class="media-text">
+      <h3>ACCEDE A NUESTROS MEDIOS</h3>
+      <p>El equipo de consultores de gestión de Electrogrupo trabaja incansablemente para abordar las diferentes demandas de los diferentes proyectos que pueden requerir más que riego.</p>
+      <button class="btn btn-lg btn-bold">MEDIOS DE COMUNICACIÓN</button>
+    </div>
+    <div class="media-image">
+      <img src="img/laempresa2.png" alt="Descrição da imagem">
+    </div>
+    <!-- Adicione um campo de imagem editável aqui -->
+    <!-- Você pode adicionar sua imagem aqui -->
+  </div>
+</section>
+<!-- Rodapé -->
+<footer class="footer">
+  <!-- Imagem e título para "SÍGUENOS EN LAS REDES SOCIALES" -->
+  <div class="social-media" style="background-image: url(img/fundoRedes2.png); background-size: cover; background-position: center;">
+    <div class="social-media-content">
+      <h2>SÍGUENOS EN LAS REDES SOCIALES</h2>
+      <!-- Ícones das redes sociais -->
+      <!-- Ícones das redes sociais -->
+      <!-- Seção do rodapé -->
+      <!-- Botões com ícones -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/electrogruposaci/" target="_blank" class="social-button">
+          <i class="fab fa-facebook-f"></i> <!-- Ícone do Facebook -->
+        </a>
+        <a href="https://www.instagram.com/electrogrupo.saci/" target="_blank" class="social-button">
+          <i class="fab fa-instagram"></i> <!-- Ícone do Instagram -->
+        </a>
+        <a href="https://wa.me/+595983130313" target="_blank" class="social-button">
+          <i class="fab fa-whatsapp"></i> <!-- Ícone do WhatsApp -->
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-represent">
+    <!-- Título na parte superior esquerda -->
+    <h2 class="represent-title">Representantes exclusivos:</h2>
+
+    <!-- Carrossel de imagens -->
+    <div class="carousel-container">
+      <div class="carousel-inner">
+        <!-- Imagens do carrossel -->
+        <img src="img/consiloslogo1semfundo.png" alt="Representante 1">
+        <img src="img/imbillogo1semfundo.png" alt="Representante 2">
+        <img src="img/westernlogo1semfundo.png" alt="Representante 3">
+        <!-- Repita as imagens para uma transição contínua -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Espaço para a logo -->
+  <div class="footer-logo">
+    <img src="img/logo1semfundo.png" alt="Logo" style="max-width: 250px;">
+    </p>
+  </div>
+  <div class="footer-images">
+    <img src="img/consiloslogo1semfundo.png" alt="Imagem 1">
+    <img src="img/imbillogo1semfundo.png" alt="Imagem 2">
+    <img src="img/westernlogo1semfundo.png" alt="Imagem 3">
+  </div>
+  <p class="copyright">
+    ©2024 Electrogrupo todos los derechos reservados.
+  </p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // JavaScript para ajustar a opacidade do cabeçalho ao rolar a página
+  document.addEventListener("DOMContentLoaded", function() {
+    var header = document.querySelector(".header");
+
+    function adjustHeaderOpacity() {
+      var scrollPosition = window.pageYOffset;
+
+      // Adiciona ou remove a classe 'solid' com base na posição de rolagem
+      if (scrollPosition > 0) {
+        header.classList.add("solid");
+      } else {
+        header.classList.remove("solid");
+      }
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+      positionFooter();
+    });
+
+    window.addEventListener("resize", function() {
+      positionFooter();
+    });
+
+    function positionFooter() {
+      const footer = document.querySelector(".footer-logo");
+      const footerHeight = footer.offsetHeight;
+      const bodyHeight = document.body.scrollHeight;
+      const windowHeight = window.innerHeight;
+
+      if (bodyHeight < windowHeight) {
+        footer.style.position = "fixed";
+        footer.style.bottom = "0";
+      } else {
+        footer.style.position = "relative";
+      }
+    }
+    // Adiciona um ouvinte de evento de rolagem à janela
+    window.addEventListener("scroll", adjustHeaderOpacity);
+
+    // Ajusta a opacidade do cabeçalho quando a página é carregada
+    adjustHeaderOpacity();
+  });
+</script>
+<script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Envolva seu código JavaScript em uma função autoinvocada
+  (function() {
+    // Certifique-se de que o DOM está carregado antes de executar seu código
+    document.addEventListener("DOMContentLoaded", function () {
+      // Seleciona elementos
+      var header = document.querySelector(".header");
+      var menuIcon = document.getElementById("menu-icon");
+      var navbar = document.getElementById("navbar");
+      var navbarMobile = document.getElementById("navbar-mobile");
+
+      // Função para alternar o menu móvel
+      function toggleMobileMenu() {
+        if (navbarMobile.style.display === "none" || navbarMobile.style.display === "") {
+          navbarMobile.style.display = "flex";
+        } else {
+          navbarMobile.style.display = "none";
+        }
+      }
+
+      // Adiciona evento de clique ao ícone do menu
+      menuIcon.addEventListener("click", toggleMobileMenu);
+
+      // Função para ajustar o menu com base no tamanho da tela
+      function adjustMenu() {
+        if (window.innerWidth <= 767) {
+          navbar.style.display = "none";
+          navbarMobile.style.display = "none";
+          menuIcon.style.display = "block";
+        } else {
+          navbar.style.display = "flex";
+          navbarMobile.style.display = "none";
+          menuIcon.style.display = "none";
+        }
+      }
+
+      // Ajustar o menu ao carregar a página e ao redimensionar a jane
+      adjustMenu();
+      window.addEventListener("resize", adjustMenu);
+    });
+  })();
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script>
+  // Função para mostrar o ícone do WhatsApp após 3 segundos
+  function showWhatsAppIcon() {
+    var whatsappIcon = document.getElementById("whatsapp-icon");
+    whatsappIcon.style.display = "block";
+  }
+
+  // Aguarda 3 segundos antes de mostrar o ícone do WhatsApp
+  setTimeout(showWhatsAppIcon, 8000);
+
+  // Aguarda 15 segundos antes de mostrar a tela modal
+  setTimeout(function() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "flex";
+  }, 60000);
+
+  // Função para fechar a tela modal
+  function closeModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+  }
+
+  // Função para fechar a tela modal
+  function closeModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+  }
+
+  // Adiciona efeito de movimento ao passar o mouse sobre o ícone do WhatsApp
+  var whatsappButton = document.querySelector("#whatsapp-icon a");
+  whatsappButton.addEventListener("mouseover", function() {
+    this.style.transform = "scale(1.5)";
+  });
+  whatsappButton.addEventListener("mouseout", function() {
+    this.style.transform = "scale(1)";
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var carouselInner = document.querySelector('.carousel-inner');
+    var carouselWidth = carouselInner.scrollWidth; // Largura total do carrossel
+    var viewportWidth = carouselInner.parentElement.offsetWidth; // Largura visível do carrossel
+
+    // Definir a posição inicial do carrossel no lado direito
+    carouselInner.style.transform = `translateX(${viewportWidth}px)`;
+
+    function moveCarousel() {
+      var step = -1; // Velocidade de movimento (ajuste conforme necessário)
+
+      // Calcular a posição atual
+      var currentTransform = parseFloat(carouselInner.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
+
+      // Calcular a nova posição movendo-se para a esquerda
+      var newTransform = currentTransform + step;
+
+      // Se chegar ao final do carrossel, redefinir a posição para o início
+      if (newTransform <= -carouselWidth) {
+        newTransform = viewportWidth;
+      }
+
+      // Aplicar a nova posição
+      carouselInner.style.transform = `translateX(${newTransform}px)`;
+
+      // Repita a cada 20ms (ajuste conforme necessário)
+      setTimeout(moveCarousel, 10);
+    }
+
+    // Iniciar o movimento contínuo
+    moveCarousel();
+  });
+</script>
+</script>
+</body>
+</html>

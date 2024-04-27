@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrogrupo</title>
+
+  <!-- Referências CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/animate.css">
+  <link rel="stylesheet" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Meta tags -->
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://www.electrogrupo.com.py/">
+  <meta name="generator" content="All in One SEO (AIOSEO) 4.5.9.2">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Electrogrupo | Outro sitio realizado com WordPress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Electrogrupo">
+  <meta property="og:url" content="https://www.electrogrupo.com.py/">
+  <meta property="article:published_time" content="2019-03-15T15:12:38+00:00">
+  <meta property="article:modified_time" content="2023-06-09T14:41:06+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Electrogrupo">
+
+  <style>
+    /* Estilos para o layout */
+    .container {
+      display: flex;
+      flex-wrap: wrap; /* Permitir que os itens sejam enrolados em telas menores */
+      background-color: #ffffff;
+    }
+    .menu {
+      flex: 1;
+      max-width: 250px; /* Definindo a largura máxima */
+      padding: 10px; /* Reduzindo o preenchimento */
+      background-color: #f2f2f2;
+      text-align: left;
+      margin-top: 50px;
+    }
+    .menu h2 {
+      font-size: 18px; /* Reduzindo o tamanho da fonte do título */
+    }
+    .menu ul {
+      list-style-type: none; /* Removendo os marcadores da lista */
+      padding: 0;
+    }
+    .menu li {
+      margin-bottom: 8px; /* Espaçamento entre os itens do menu */
+    }
+    .menu a {
+      text-decoration: none; /* Removendo sublinhado dos links */
+      color: #ffffff; /* Cor do texto */
+    }
+    .product-description {
+      display: none; /* Ocultar por padrão */
+      flex: 1;
+      padding: 20px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      margin-top: 50px;
+
+    }
+    .product-description.active {
+      display: block; /* Exibir quando ativo */
+      color: #333333;
+      font-size: 1.3em;
+    }
+    .product-description img {
+      display: block; /* Para garantir que as imagens sejam tratadas como blocos */
+      margin: 0 auto; /* Define margens automáticas para centralizar horizontalmente */
+      max-width: 100%;
+      height: auto;
+      max-height: 500px;
+      margin-top: 30px;
+    }
+    @media only screen and (max-width: 768px) {
+      /* Outros estilos... */
+      .product-description img {
+        max-width: 100%; /* Ajustar a largura da imagem para ocupar toda a largura na tela menor */
+        margin-right: 0; /* Remover a margem na tela menor */
+        margin-bottom: 20px; /* Adicionar margem inferior para separar a imagem da descrição */
+      }
+    }
+    .menu a {
+      display: inline-block; /* Alterado de 'block' para 'inline-block' */
+      padding: 5px;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      color: #333333;
+      border-radius: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #f30a0a; /* Mudar a cor de fundo ao passar o mouse */
+      color: #FFFFFF;
+    }
+    .black-text {
+      color: red;
+      font-size: 2em;
+    }
+
+    .red-text {
+      color: red;
+      font-size: 2em;
+    }
+  </style>
+  <style>
+    /* Estilos do cabeçalho */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0); /* Inicia com fundo transparente */
+      z-index: 9999;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .solid {
+      background-color: rgb(255, 255, 255); /* Fundo branco quando rolar para baixo */
+    }
+
+    /* Estilos da logo */
+    .logo img {
+      max-width: 280px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+
+    /* Estilos da barra de navegação */
+    .navbar {
+      display: flex;
+      gap: 20px; /* Espaçamento entre os links */
+      align-items: center;
+    }
+
+    .navbar a {
+      color: #333333; /* Cor vermelha para os links */
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #f30a0a; /* Cor preta ao passar o mouse */
+    }
+
+    /* Estilo para o menu "hamburger" */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      color: red; /* Cor vermelha para o ícone "hamburger" */
+    }
+
+    /* Estilos para o menu de navegação móvel */
+    .navbar-mobile {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%; /* Largura total */
+      background-color: white;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Estilos para links do menu móvel */
+    .navbar-mobile a {
+      padding: 10px; /* Espaçamento dos links */
+      border-bottom: 1px solid #ccc; /* Linha divisória */
+      color: red;
+    }
+
+    /* Exibir a barra de navegação e ocultar o menu "hamburger" em telas grandes */
+    @media (min-width: 768px) {
+      .navbar {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+    }
+
+    /* Exibir o menu "hamburger" em telas menores */
+    @media (max-width: 767px) {
+      .navbar {
+        display: none;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+    }
+
+    /* Estilo para a imagem de fundo */
+    .image-container img {
+      width: 100px; /* Ajuste conforme necessário */
+      height: auto;
+    }
+
+    /* Posicionamento da imagem à direita */
+    @media (min-width: 768px) {
+      .image-container {
+        margin-left: auto;
+      }
+    }
+
+    /* Estilo para o vídeo */
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Estilo para o título do vídeo */
+    #video-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      font-size: 3.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: white; /* Cor branca de fundo do dropdown */
+      z-index: 9999;
+      margin-top: 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilos para os botões do dropdown */
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 16px;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px; /* Bordas arredondadas para os botões */
+    }
+
+    /* Quando o mouse passa sobre os botões do dropdown */
+    .dropdown-menu a:hover {
+      background-color: red; /* Cor vermelha ao passar o mouse */
+      color: white; /* Cor branca do texto */
+    }
+
+    /* Estilos para o dropdown em telas pequenas */
+    .navbar-mobile .dropdown-menu a {
+      color: black; /* Cor padrão do texto em telas pequenas */
+    }
+
+    .navbar-mobile .dropdown-menu a:hover {
+      background-color: red; /* Cor vermelha ao passar o mouse em telas pequenas */
+      color: white; /* Cor branca do texto em telas pequenas */
+    }
+    /* Ícone de rolagem */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+    }
+
+    .scroll-down i {
+      font-size: 24px;
+      animation: bounce 2s infinite;
+    }
+    .image-container {
+      display: flex;
+      flex-direction: column; /* Posiciona as imagens em coluna */
+    }
+
+    /* Estilos para as imagens */
+    .image-container img {
+      width: 100px; /* Ajuste conforme necessário */
+      height: auto;
+      margin-bottom: 10px; /* Espaçamento entre as imagens */
+    }
+  </style>
+  <style>
+    footer {
+      /* Estilização do rodapé */
+      text-align: center; /* Centraliza todos os elementos dentro do rodapé */
+      padding: 20px; /* Espaçamento interno para o rodapé */
+      background-color: #ffffff; /* Cor de fundo para o rodapé (pode ser ajustada) */
+      margin-top: 100px;
+    }
+
+    .footer-logo,
+    .footer-images {
+      /* Estilos para as divisões dentro do rodapé */
+      display: flex; /* Alinhamento flexível */
+      justify-content: center; /* Centraliza os elementos dentro de cada divisão */
+      align-items: center; /* Centraliza verticalmente os elementos dentro de cada divisão */
+      margin-bottom: 10px; /* Espaçamento inferior entre as divisões */
+    }
+
+    .footer-logo img {
+      /* Estilos para a imagem dentro da divisão footer-logo */
+      max-width: 250px; /* Limita a largura da imagem */
+    }
+
+    .footer-images img {
+      /* Estilos para as imagens dentro da divisão footer-images */
+      width: 100px; /* Largura das imagens */
+      margin: 0 10px; /* Espaçamento horizontal entre as imagens */
+    }
+    .copyright {
+      /* Estilo para a seção de direitos autorais */
+      margin-top: 20px; /* Adiciona um pequeno espaço acima para separar da divisão anterior */
+      text-align: center; /* Centraliza o texto */
+      font-size: 13px;
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="logo">
+    <img src="img/logo1semfundo.png" alt="Logo Electrogrupo">
+  </div>
+
+  <!-- Ícone do menu "hamburger" -->
+  <div class="menu-icon" id="menu-icon">
+    <!-- Ícone de "hamburger" mais elegante usando Font Awesome -->
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Barra de navegação -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Menu de navegação móvel -->
+  <nav class="navbar-mobile" id="navbar-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Contêiner para as imagens -->
+  <div class="image-container">
+    <img src="img/consiloslogo1semfundo.png" alt="Image 1">
+    <img src="img/imbillogo1semfundo.png" alt="Image 2">
+    <img src="img/westernlogo1semfundo.png" alt="Image 3">
+  </div>
+</header>
+
+<!-- Vídeo de fundo -->
+<video autoplay muted loop style="position: relative; width: 100%; height: 100vh; object-fit: cover;">
+  <source src="img/solucionriego.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<!-- Título do vídeo -->
+<h1 id="video-title">REPRESENTANTE EXCLUSIVO WESTERN</h1>
+<div class="scroll-down">
+  <i class="fa fa-angle-down"></i>
+</div>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector(".header");
+    var menuIcon = document.getElementById("menu-icon");
+    var navbar = document.getElementById("navbar");
+    var navbarMobile = document.getElementById("navbar-mobile");
+
+    // Alternar o menu móvel
+    function toggleMobileMenu() {
+      if (navbarMobile.style.display === "none" || navbarMobile.style.display === "") {
+        navbarMobile.style.display = "flex";
+      } else {
+        navbarMobile.style.display = "none";
+      }
+    }
+
+    // Adicionar evento de clique ao ícone do menu
+    menuIcon.addEventListener("click", toggleMobileMenu);
+
+    // Ajustar o menu com base no tamanho da tela
+    function adjustMenu() {
+      if (window.innerWidth <= 767) {
+        navbar.style.display = "none";
+        navbarMobile.style.display = "none";
+        menuIcon.style.display = "block";
+      } else {
+        navbar.style.display = "flex";
+        navbarMobile.style.display = "none";
+        menuIcon.style.display = "none";
+      }
+    }
+
+    // Ajustar o menu ao carregar a página e ao redimensionar a janela
+    adjustMenu();
+    window.addEventListener("resize", adjustMenu);
+
+    // Ajustar a opacidade do cabeçalho com base na posição de rolagem
+    function adjustHeaderOpacity() {
+      var scrollPosition = window.pageYOffset;
+
+      if (scrollPosition > 0) {
+        header.classList.add("solid");
+      } else {
+        header.classList.remove("solid");
+      }
+    }
+
+    // Adiciona um ouvinte de evento para ajustar a opacidade do cabeçalho ao rolar a janela
+    window.addEventListener("scroll", adjustHeaderOpacity);
+
+    // Ajustar a opacidade do cabeçalho ao carregar a página
+    adjustHeaderOpacity();
+  });
+</script>
+
+
+
+<div class="container">
+  <div class="menu">
+    <h2><span class="black-text">WEST</span><span class="red-text">ERN</span></h2>
+    <ul>
+      <li><a href="img/1.pdf" class="pdf-link">- SMALL FIELD</a></li>
+      <li><a href="img/2.pdf" class="pdf-link">- PIVOTE CENTRAL</a></li>
+      <li><a href="img/3.pdf" class="pdf-link">- iCONTROL REMOTE</a></li>
+      <li><a href="img/4.pdf" class="pdf-link">- iCONTROL PUMP</a></li>
+      <li><a href="img/5.pdf" class="pdf-link">- iCONTROL STANDARD</a></li>
+      <li><a href="img/6.pdf" class="pdf-link">- CATALAGO DE PIVOTES</a></li>
+      <!-- Adicione mais itens do menu conforme necessário -->
+    </ul>
+  </div>
+</div>
+<footer>
+  <div class="footer-logo">
+    <img src="img/logo1semfundo.png" alt="Logo" style="max-width: 250px;">
+    </p>
+  </div>
+  <div class="footer-images">
+    <img src="img/consiloslogo1semfundo.png" alt="Imagem 1">
+    <img src="img/imbillogo1semfundo.png" alt="Imagem 2">
+    <img src="img/westernlogo1semfundo.png" alt="Imagem 3">
+  </div>
+  <p class="copyright">
+    ©2024 Electrogrupo todos los derechos reservados.
+  </p>
+  </div>
+</footer>
+
+</div>
+<script>
+  // Selecionar todos os links de produtos
+  const productLinks = document.querySelectorAll('.product-link');
+
+  // Adicionar evento de clique a cada link
+  productLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Evitar comportamento padrão de navegação
+
+      // Obter o ID do produto a ser exibido
+      const productId = this.getAttribute('href').substring(1);
+
+      // Ocultar todos os produtos
+      document.querySelectorAll('.product-description').forEach(product => {
+        product.classList.remove('active');
+      });
+
+      // Exibir o produto correspondente ao ID clicado
+      document.getElementById(productId).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrogrupo</title>
+
+  <!-- Referências CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/animate.css">
+  <link rel="stylesheet" href="https://www.electrogrupo.com.py/wp-content/themes/aquariego/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Meta tags -->
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://www.electrogrupo.com.py/">
+  <meta name="generator" content="All in One SEO (AIOSEO) 4.5.9.2">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Electrogrupo | Outro sitio realizado com WordPress">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Electrogrupo">
+  <meta property="og:url" content="https://www.electrogrupo.com.py/">
+  <meta property="article:published_time" content="2019-03-15T15:12:38+00:00">
+  <meta property="article:modified_time" content="2023-06-09T14:41:06+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Electrogrupo">
+
+  <!-- Estilos CSS -->
+  <style>
+    /* Estilos do cabeçalho */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0); /* Inicia com fundo transparente */
+      z-index: 9999;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .solid {
+      background-color: rgb(255, 255, 255); /* Fundo branco quando rolar para baixo */
+    }
+
+    /* Estilos da logo */
+    .logo img {
+      max-width: 280px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
+    }
+
+    /* Estilos da barra de navegação */
+    .navbar {
+      display: flex;
+      gap: 20px; /* Espaçamento entre os links */
+      align-items: center;
+    }
+
+    .navbar a {
+      color: #333333; /* Cor vermelha para os links */
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      color: #f30a0a; /* Cor preta ao passar o mouse */
+    }
+
+    /* Estilo para o menu "hamburger" */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      color: red; /* Cor vermelha para o ícone "hamburger" */
+    }
+
+    /* Estilos para o menu de navegação móvel */
+    .navbar-mobile {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%; /* Largura total */
+      background-color: white;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Estilos para links do menu móvel */
+    .navbar-mobile a {
+      padding: 10px; /* Espaçamento dos links */
+      border-bottom: 1px solid #ccc; /* Linha divisória */
+      color: red;
+    }
+
+    /* Exibir a barra de navegação e ocultar o menu "hamburger" em telas grandes */
+    @media (min-width: 768px) {
+      .navbar {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+    }
+
+    /* Exibir o menu "hamburger" em telas menores */
+    @media (max-width: 767px) {
+      .navbar {
+        display: none;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+    }
+
+    /* Estilo para a imagem de fundo */
+    .image-container img {
+      width: 100px; /* Ajuste conforme necessário */
+      height: auto;
+    }
+
+    /* Posicionamento da imagem à direita */
+    @media (min-width: 768px) {
+      .image-container {
+        margin-left: auto;
+      }
+    }
+
+    /* Estilo para o vídeo */
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Estilo para o título do vídeo */
+    #video-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      font-size: 3.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: white; /* Cor branca de fundo do dropdown */
+      z-index: 9999;
+      margin-top: 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilos para os botões do dropdown */
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 16px;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px; /* Bordas arredondadas para os botões */
+    }
+
+    /* Quando o mouse passa sobre os botões do dropdown */
+    .dropdown-menu a:hover {
+      background-color: red; /* Cor vermelha ao passar o mouse */
+      color: white; /* Cor branca do texto */
+    }
+
+    /* Estilos para o dropdown em telas pequenas */
+    .navbar-mobile .dropdown-menu a {
+      color: black; /* Cor padrão do texto em telas pequenas */
+    }
+
+    .navbar-mobile .dropdown-menu a:hover {
+      background-color: red; /* Cor vermelha ao passar o mouse em telas pequenas */
+      color: white; /* Cor branca do texto em telas pequenas */
+    }
+    /* Ícone de rolagem */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+    }
+
+    .scroll-down i {
+      font-size: 24px;
+      animation: bounce 2s infinite;
+    }
+    .image-container {
+      display: flex;
+      flex-direction: column; /* Posiciona as imagens em coluna */
+    }
+
+    /* Estilos para as imagens */
+    .image-container img {
+      width: 100px; /* Ajuste conforme necessário */
+      height: auto;
+      margin-bottom: 10px; /* Espaçamento entre as imagens */
+    }
+  </style>
+</head>
+<style>
+  body {
+    background-color: #ffffff; /* Cor de fundo desejada */
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 10px; /* Adicionando padding nas laterais para dispositivos menores */
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+  }
+
+  .product {
+    width: calc(25% - 20px); /* Usando calc para garantir que haja espaço para a margem */
+    max-width: 260px; /* Limitando a largura máxima para evitar que os itens se estiquem muito em telas maiores */
+    height: 400px; /* Aumentei a altura para acomodar o título e a descrição */
+    overflow: hidden;
+    border: 1px solid #ffffff;
+    padding: 15px; /* Adicionado padding para espaço entre os elementos */
+    box-sizing: border-box; /* Garantindo que padding e borda não aumentem o tamanho total do elemento */
+  }
+
+  .product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .product h2 {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  .product p {
+    font-size: 14px;
+  }
+  h1 {
+    font-weight: bold;
+    font-style: italic;
+    color: #333333;
+    font-size: 2.5em;
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+
+  /* Media queries para tornar o layout responsivo */
+  @media screen and (max-width: 768px) {
+    .product {
+      width: calc(50% - 20px); /* Em telas menores, exibir dois produtos por linha */
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product {
+      width: calc(100% - 20px); /* Em telas muito pequenas, exibir um produto por linha */
+    }
+  }
+
+  #list2 {
+    display: none; /* Lista 2 inicialmente oculta */
+  }
+  /* Estilos para os botões */
+  button {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adicionando transição para suavizar o efeito */
+  }
+
+  /* Estilos para o botão "Próximo" */
+  #nextButton {
+    display: inline-block;
+  }
+
+  /* Estilos para o botão "Anterior" */
+  #prevButton {
+    display: none; /* Inicialmente oculto */
+  }
+
+  /* Efeito ao passar o mouse */
+  button:hover {
+    color: red;
+    background-color: rgba(0, 0, 0, 0.1); /* Adicionando um pouco de opacidade ao fundo */
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    margin-bottom: 100px;
+  }
+</style>
+<style>
+  footer {
+    /* Estilização do rodapé */
+    text-align: center; /* Centraliza todos os elementos dentro do rodapé */
+    padding: 20px; /* Espaçamento interno para o rodapé */
+    background-color: #ffffff; /* Cor de fundo para o rodapé (pode ser ajustada) */
+  }
+
+  .footer-logo,
+  .footer-images {
+    /* Estilos para as divisões dentro do rodapé */
+    display: flex; /* Alinhamento flexível */
+    justify-content: center; /* Centraliza os elementos dentro de cada divisão */
+    align-items: center; /* Centraliza verticalmente os elementos dentro de cada divisão */
+    margin-bottom: 10px; /* Espaçamento inferior entre as divisões */
+  }
+
+  .footer-logo img {
+    /* Estilos para a imagem dentro da divisão footer-logo */
+    max-width: 250px; /* Limita a largura da imagem */
+  }
+
+  .footer-images img {
+    /* Estilos para as imagens dentro da divisão footer-images */
+    width: 100px; /* Largura das imagens */
+    margin: 0 10px; /* Espaçamento horizontal entre as imagens */
+  }
+  .copyright {
+    /* Estilo para a seção de direitos autorais */
+    margin-top: 20px; /* Adiciona um pequeno espaço acima para separar da divisão anterior */
+    text-align: center; /* Centraliza o texto */
+    font-size: 13px;
+    color: #333333;
+  }
+</style>
+</head>
+<body>
+<!-- Cabeçalho com logo, menu e imagem -->
+<header class="header">
+  <div class="logo">
+    <img src="img/logo1semfundo.png" alt="Logo Electrogrupo">
+  </div>
+
+  <!-- Ícone do menu "hamburger" -->
+  <div class="menu-icon" id="menu-icon">
+    <!-- Ícone de "hamburger" mais elegante usando Font Awesome -->
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Barra de navegação -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Menu de navegação móvel -->
+  <nav class="navbar-mobile" id="navbar-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="LaEmpresa.html">La empresa</a>
+    <a href="Productos.html">Productos</a>
+    <a href="#">Servicios</a>
+    <a href="#">Trabaja con nosotros</a>
+  </nav>
+
+  <!-- Contêiner para as imagens -->
+  <div class="image-container">
+    <img src="img/consiloslogo1semfundo.png" alt="Image 1">
+    <img src="img/imbillogo1semfundo.png" alt="Image 2">
+    <img src="img/westernlogo1semfundo.png" alt="Image 3">
+  </div>
+</header>
+
+<!-- Vídeo de fundo -->
+<video autoplay muted loop style="position: relative; width: 100%; height: 100vh; object-fit: cover;">
+  <source src="img/imbilproducto.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<!-- Título do vídeo -->
+<h1 id="video-title">IMBIL<br>
+  SOLUCIONES DE BOMBEO</h1>
+<div class="scroll-down">
+  <i class="fa fa-angle-down"></i>
+</div>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector(".header");
+    var menuIcon = document.getElementById("menu-icon");
+    var navbar = document.getElementById("navbar");
+    var navbarMobile = document.getElementById("navbar-mobile");
+
+    // Alternar o menu móvel
+    function toggleMobileMenu() {
+      if (navbarMobile.style.display === "none" || navbarMobile.style.display === "") {
+        navbarMobile.style.display = "flex";
+      } else {
+        navbarMobile.style.display = "none";
+      }
+    }
+
+    // Adicionar evento de clique ao ícone do menu
+    menuIcon.addEventListener("click", toggleMobileMenu);
+
+    // Ajustar o menu com base no tamanho da tela
+    function adjustMenu() {
+      if (window.innerWidth <= 767) {
+        navbar.style.display = "none";
+        navbarMobile.style.display = "none";
+        menuIcon.style.display = "block";
+      } else {
+        navbar.style.display = "flex";
+        navbarMobile.style.display = "none";
+        menuIcon.style.display = "none";
+      }
+    }
+
+    // Ajustar o menu ao carregar a página e ao redimensionar a janela
+    adjustMenu();
+    window.addEventListener("resize", adjustMenu);
+
+    // Ajustar a opacidade do cabeçalho com base na posição de rolagem
+    function adjustHeaderOpacity() {
+      var scrollPosition = window.pageYOffset;
+
+      if (scrollPosition > 0) {
+        header.classList.add("solid");
+      } else {
+        header.classList.remove("solid");
+      }
+    }
+
+    // Adiciona um ouvinte de evento para ajustar a opacidade do cabeçalho ao rolar a janela
+    window.addEventListener("scroll", adjustHeaderOpacity);
+
+    // Ajustar a opacidade do cabeçalho ao carregar a página
+    adjustHeaderOpacity();
+  });
+</script>
+
+<div class="container">
+  <h1>PRODUCTOS IMBIL</h1>
+  <div class="product-list" id="list1">
+    <!-- Lista 1 de produtos -->
+    <!-- Cada produto é um item da lista -->
+    <div class="product">
+      <img src="img/producto1.png" alt="Produto 1">
+      <h2>NGI</h2>
+      <p>CAUDAL: 1.150M³/H<br>
+        TEMPERATURA: HASTA 350º C<br>
+        PRESIÓN: 130 M.C.A.</p>
+    </div>
+    <!-- Adicione mais produtos aqui conforme necessário -->
+    <div class="product">
+      <img src="img/producto2.png" alt="Produto 2">
+      <h2>INI</h2>
+      <p>CAUDAL: 1.300M³/H<br>
+        TEMPERATURA: HASTA 350º C<br>
+        PRESIÓN: 230 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/3.png" alt="Produto 3">
+      <h2>ITAP</h2>
+      <p>CAUDAL: 2000 M³/H<br>
+        TEMPERATURA: HASTA 350º C<br>
+        PRESIÓN: 134 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/4.png">
+      <h2>Re-autoescorvante E/EP</h2>
+      <p>CAUDAL: 1.200 M³/H<br>
+        TEMPERATURA: HASTA 80º C<br>
+        PRESIÓN: 60 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/5.png">
+      <h2>NCI</h2>
+      <p>CAUDAL: 9.500 M³/H
+        TEMPERATURA: HASTA 105º C
+        PRESIÓN: 30 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/6.png">
+      <h2>NCS</h2>
+      <p>CAUDAL: 9.000 M³/H
+        TEMPERATURA: HASTA 105º C
+        PRESIÓN: 30 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/7.png">
+      <h2>APN</h2>
+      <p>CAUDAL: 1.400 M³/H
+        TEMPERATURA: HASTA 105º C
+        PRESIÓN: 200 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/8.png">
+      <h2>BP</h2>
+      <p>CAUDAL: 2000 M³/H
+        TEMPERATURA: HASTA 105º C
+        PRESIÓN: 120 M.C.A.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="product-list" id="list2" style="display: none;">
+    <!-- Lista 2 de produtos (inicialmente oculta) -->
+    <!-- Cada produto é um item da lista -->
+    <div class="product">
+      <img src="img/9.png" alt="Produto 9">
+      <h2>BEW</h2>
+      <p>CAUDAL: 500 M³/H
+        TEMPERATURA: HASTA 140º C
+        PRESIÓN: 250 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/10.png" alt="Produto 10">
+      <h2>BMI</h2>
+      <p>CAUDAL: 1.400 M³/H
+        TEMPERATURA: HASTA 105º C
+        PRESIÓN: 200 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/11.png" alt="Produto 11">
+      <h2>BMS</h2>
+      <p>CAUDAL: 3.000 M³/H
+        TEMPERATURA: HASTA 120º C
+        PRESIÓN: 110 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/12.png" alt="Produto 12">
+      <h2>INI-HT</h2>
+      <p>CAUDAL: 600 M³/H
+        TEMPERATURA: HASTA 400º C
+        PRESIÓN: 230 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/13.png" alt="Produto 13">
+      <h2>BCI</h2>
+      <p>CAUDAL: 600 M³/H
+        TEMPERATURA: HASTA 125º C
+        PRESIÓN: 1800 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/14.png" alt="Produto 14">
+      <h2>IS</h2>
+      <p>CAUDAL: 3.500M³/H
+        TEMPERATURA: 120º C
+        PRESIÓN: 105 M.C.A.</p>
+    </div>
+    <div class="product">
+      <img src="img/15.png" alt="Produto 15">
+      <h2>BVI</h2>
+      <p>CAUDAL: 21.600 M³/H
+        TEMPERATURA: N/A
+        PRESIÓN: 8 A 27 INHG</p>
+    </div>
+  </div>
+</div>
+<div class="button-container">
+  <button id="prevButton">Anterior</button>
+  <button id="nextButton">Próximo</button>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/logo1semfundo.png" alt="Logo" style="max-width: 250px;">
+    </p>
+  </div>
+  <div class="footer-images">
+    <img src="img/consiloslogo1semfundo.png" alt="Imagem 1">
+    <img src="img/imbillogo1semfundo.png" alt="Imagem 2">
+    <img src="img/westernlogo1semfundo.png" alt="Imagem 3">
+  </div>
+  <p class="copyright">
+    ©2024 Electrogrupo todos los derechos reservados.
+  </p>
+  </div>
+</footer>
+
+<script>
+  var prevButton = document.getElementById('prevButton');
+  var nextButton = document.getElementById('nextButton');
+  var list1 = document.getElementById('list1');
+  var list2 = document.getElementById('list2');
+
+  nextButton.addEventListener('click', function() {
+    list1.style.display = 'none';
+    list2.style.display = 'flex';
+    prevButton.style.display = 'inline-block'; // Exibe o botão "Anterior"
+    this.style.display = 'none'; // Esconde o botão "Próximo"
+  });
+
+  prevButton.addEventListener('click', function() {
+    list1.style.display = 'flex';
+    list2.style.display = 'none';
+    nextButton.style.display = 'inline-block'; // Exibe o botão "Próximo"
+    this.style.display = 'none'; // Esconde o botão "Anterior"
+  });
+</script>
+</body>
+</html>
