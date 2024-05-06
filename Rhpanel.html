@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Formulários</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .panel {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<h2>Visualizar Formulários</h2>
+<button onclick="buscarFormularios()">Buscar Formulários</button>
+<div id="formulariosContainer"></div>
+
+<script>
+  function buscarFormularios() {
+    fetch('/formulario/todos') // Corrigido para acessar o endpoint correto
+            .then(response => response.json())
+            .then(data => {
+              const container = document.getElementById('formulariosContainer');
+              container.innerHTML = ''; // Limpa o conteúdo anterior
+              data.forEach(formulario => {
+                const panel = document.createElement('div');
+                panel.classList.add('panel');
+                panel.innerHTML = `
+                    <p><strong>Nome Completo:</strong> ${formulario.nomeCompleto}</p>
+                    <p><strong>Endereço:</strong> ${formulario.endereco}</p>
+                    <p><strong>Telefone:</strong> ${formulario.telefone}</p>
+                    <p><strong>Descrição:</strong> ${formulario.descricao}</p>
+                    <p><strong>Número Documento:</strong> ${formulario.numeroDocumento}</p>
+                `;
+                container.appendChild(panel);
+              });
+            })
+            .catch(error => {
+              console.error('Erro ao buscar formulários:', error);
+              alert('Erro ao buscar formulários!');
+            });
+  }
+</script>
+</body>
+</html>
