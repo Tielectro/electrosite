@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captura e Impressão de Fotos</title>
+</head>
+<body>
+<h1>Captura e Impressão de Fotos</h1>
+<div id="camera"></div>
+<select id="selectCamera">
+  <option value="user">Câmera Frontal</option>
+  <option value="environment">Câmera Traseira</option>
+</select>
+<button onclick="alternarCamera()">Alternar Câmera</button>
+<button onclick="capturarFoto()">Capturar Foto</button>
+<button onclick="gerarPDF()" id="gerarPDFBtn" disabled>Gerar PDF</button>
+
+<script>
+  var fotos = [];
+  var cameraFacingMode = 'user';
+
+  function alternarCamera() {
+    cameraFacingMode = cameraFacingMode === 'user' ? 'environment' : 'user';
+    iniciarCamera();
+  }
+
+  function iniciarCamera() {
+    // Limpar o conteúdo anterior da câmera, se houver
+    document.getElementById('camera').innerHTML = '';
+
+    // Acesso à câmera
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraFacingMode } })
+      .then(function(stream) {
+        var video = document.createElement('video');
+        video.srcObject = stream;
+        document.getElementById('camera').appendChild(video);
+        video.play();
+      })
+      .catch(function(err) {
+        console.error('Erro ao acessar a câmera: ', err);
+      });
+  }
+
+  function capturarFoto() {
+    var video = document.querySelector('video');
+    if (!video) {
+      alert('Por favor, inicie a câmera antes de capturar a foto.');
+      return;
+    }
+
+    // Captura da foto
+    var canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    var context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Exibição da foto (opcional)
+    var foto = canvas.toDataURL('image/jpeg');
+    fotos.push(foto); // Armazenar a foto no array de fotos
+
+    // Verificar se foram capturadas duas fotos para habilitar o botão de gerar PDF
+    if (fotos.length === 2) {
+      document.getElementById('gerarPDFBtn').disabled = false;
+    }
+  }
+
+  function gerarPDF() {
+    var doc = new jsPDF();
+    var x = 10;
+    var y = 10;
+    for (var i = 0; i < fotos.length; i++) {
+      doc.addImage(fotos[i], 'JPEG', x, y, 80, 80);
+      x += 90; // ajuste de posição para a próxima foto
+    }
+
+    // Converter o PDF para um blob
+    var pdfBlob = doc.output('blob');
+
+    // Criar um link de download para o usuário
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(pdfBlob);
+    link.download = 'fotos.pdf';
+    link.click();
+  }
+
+  // Iniciar a câmera ao carregar a página
+  window.onload = function() {
+    iniciarCamera();
+  };
+</script>
+</body>
+</html>
