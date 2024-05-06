@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captura e Impressão de Fotos</title>
+</head>
+<body>
+<h1>Captura e Impressão de Fotos</h1>
+<div id="camera"></div>
+<button onclick="capturarFoto()">Tirar Foto 1</button>
+<button onclick="capturarFoto()">Tirar Foto 2</button>
+<button onclick="confirmarFotos()">Confirmar</button>
+
+<script>
+  var fotos = [];
+
+  function capturarFoto() {
+    // Acesso à câmera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        var video = document.createElement('video');
+        video.srcObject = stream;
+        document.getElementById('camera').appendChild(video);
+        video.play();
+
+        // Captura da foto
+        var canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        var context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Exibição da foto
+        var foto = canvas.toDataURL('image/jpeg');
+        fotos.push(foto);
+
+        // Parar a câmera
+        video.srcObject.getTracks().forEach(track => track.stop());
+        document.getElementById('camera').removeChild(video);
+      })
+      .catch(function(err) {
+        console.error('Erro ao acessar a câmera: ', err);
+      });
+  }
+
+  function confirmarFotos() {
+    if (fotos.length !== 2) {
+      alert('Por favor, tire duas fotos antes de confirmar.');
+      return;
+    }
+
+    // Gerar PDF com as duas fotos
+    var doc = new jsPDF();
+    var x = 10;
+    var y = 10;
+    for (var i = 0; i < fotos.length; i++) {
+      doc.addImage(fotos[i], 'JPEG', x, y, 80, 80);
+      x += 90; // ajuste de posição para a próxima foto
+    }
+    doc.save('fotos.pdf');
+  }
+</script>
+</body>
+</html>
